@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain,dialog } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -73,6 +73,15 @@ try {
       app.quit();
     }
   });
+
+  ipcMain.on('select-dirs', async (event, arg) => {
+    const result = await dialog.showOpenDialog(win, {
+      properties: ['openDirectory']
+    })
+    console.log(result);
+    
+    console.log('directories selected', result.filePaths)
+  })
 
   app.on('activate', () => {
     // On OS X it's common to re-create a window in the app when the
