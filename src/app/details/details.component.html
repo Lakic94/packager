@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="space-between center">
+  <mat-tab-group mat-stretch-tabs dynamicHeight>
+    <mat-tab label="Menu Configuration">
+      <div class="example-small-box mat-elevation-z4">{{ options | json }}</div>
+    </mat-tab>
+    <mat-tab label="Options Configuration">
+      <div class="example-large-box mat-elevation-z4">
+        {{ menuConfig | json }}
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <button mat-raised-button (click)="navigate()">Back</button>
+</div>

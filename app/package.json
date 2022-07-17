@@ -3,5 +3,7 @@
   "version": "10.5.2",
   "main": "main.js",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "fs-extra": "^10.1.0"
+  }
 }

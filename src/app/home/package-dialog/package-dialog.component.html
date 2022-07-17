@@ -1,0 +1,13 @@
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between center" class="dialog-container">
+  <mat-form-field>
+    <mat-label>Package Name</mat-label>
+    <input matInput type="text" [formControl]="value" />
+  </mat-form-field>
+  <button (click)="openFilePicker()" mat-raised-button class="directory-button" [disabled]="!value.valid">
+    Choose directory
+    <mat-icon aria-hidden="false" aria-label="Example home icon"
+      >folder</mat-icon
+    >
+  </button>
+  <div>{{test}}</div>
+</div>

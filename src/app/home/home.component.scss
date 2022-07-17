@@ -1,0 +1,19 @@
+.container {
+  height: auto;
+}
+
+.grid-item {
+  border-radius: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+  height: 15em;
+}
+
+.grid-container {
+  padding-top: 10em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 15em));
+  // grid-template-rows: repeat(100, 1fr);
+  grid-gap: 10px;
+  height: calc(100vh - 10px);
+}

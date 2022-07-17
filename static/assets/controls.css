@@ -1,0 +1,195 @@
+
+#LayoutControls.show{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.css-kuibs8 {
+    position: absolute;
+    display: flex;
+    left: 4px;
+    bottom: 4px;
+    right: auto;
+}
+.css-11uyp9j {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    opacity: 1;
+    transition-duration: 0.3s;
+    transition-property: filter, opacity;
+    position: relative;
+}
+.css-1alxjng {
+    width: auto;
+    background: rgba(0, 0, 0, 0.3);
+    height: 39px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 3px;
+    pointer-events: auto;
+    transition-duration: 0.3s;
+    transition-property: background;
+}
+.view-active:first-of-type {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 3px;
+}
+.view-active {
+    appearance: none;
+    user-select: none;
+    margin: 0px;
+    padding: 4px;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    overflow: visible;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    height: 39px;
+    line-height: 39px;
+    
+    background: rgba(0, 0, 0, 0.71);
+    cursor: default;
+    stroke: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    opacity: 1;
+    transition: width 0.3s ease 0s;
+    text-align: center;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    width: 71px;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
+  }
+  .tour-playing{
+    animation: blinker 1s linear infinite;
+
+  }
+  .view_mode#vr{
+      display: none;
+  }
+  .view_mode.show#vr{
+    display: inline-block;
+}
+@media only screen and (max-width: 640px) {
+    .view-active {
+        width: 46px!important;
+    }
+    .css-13dkh0e {
+        width: 46px!important;
+    }
+    #LayoutControls.show{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 7px;
+    }
+}
+.css-10mgo9f {
+    position: absolute;
+    inset: 1px;
+    border-radius: 3px;
+    box-shadow: rgb(255 255 255 / 90%) 0px 0px 0px 2px;
+    opacity: 0;
+}
+.css-1k00z3s {
+    display: block;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+    text-align: center;
+    transform: translate3d(0px, 0.5px, 0px);
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    position: relative;
+}
+.css-13dkh0e {
+    appearance: none;
+    user-select: none;
+    margin: 0px;
+    padding: 4px;
+    text-decoration: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    overflow: visible;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    height: 39px;
+    line-height: 39px;
+    width: 71px;
+    background: transparent;
+    cursor: pointer;
+    stroke: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    opacity: 0.8;
+    transition: width 0.3s ease 0s;
+    text-align: center;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+.css-10mgo9f {
+    position: absolute;
+    inset: 1px;
+    border-radius: 3px;
+    box-shadow: rgb(255 255 255 / 90%) 0px 0px 0px 2px;
+    opacity: 0;
+}
+.css-1b2nn4m {
+    display: block;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+    text-align: center;
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    position: relative;
+}
+/* .css-13dkh0e:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+} */
+.css-10mgo9f {
+    position: absolute;
+    inset: 1px;
+    border-radius: 3px;
+    box-shadow: rgb(255 255 255 / 90%) 0px 0px 0px 2px;
+    opacity: 0;
+}
+.css-1b2nn4m {
+    display: block;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+    text-align: center;
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    position: relative;
+}

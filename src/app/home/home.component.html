@@ -1,1 +1,22 @@
-<div (click)="openDialog()">Open Dialog</div>
+<div fxLayout="row" fxLayoutAlign="center center" class="container">
+  <div fxFlex="70" class="grid-container">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      (click)="openDialog()"
+      class="grid-item"
+    >
+      Open Dialog
+    </div>
+    <ng-container *ngFor="let project of projects">
+      <div
+        class="grid-item"
+        (click)="navigate(project)"
+      >
+        <h1>
+          {{ project.name }}
+        </h1>
+      </div>
+    </ng-container>
+  </div>
+</div>

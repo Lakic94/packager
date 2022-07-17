@@ -1,7 +1,9 @@
-import { app, BrowserWindow, screen, ipcMain,dialog } from 'electron';
+import { app, BrowserWindow, screen, ipcMain, dialog } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
+import * as fse from 'fs-extra';
+
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -36,7 +38,7 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
 
@@ -74,13 +76,189 @@ try {
     }
   });
 
+  let userAppData = app.getPath('userData')
+  // console.log(userAppData);
+
+  if (!fs.existsSync(userAppData + "/packages")) {
+    fs.mkdirSync(userAppData + "/packages");
+  }
+
+  ipcMain.on('init', async (event, args) => {
+
+    let initialPackages = [];
+    let names;
+
+    try {
+      names = await fs.readdirSync(`${userAppData}/packages/`);
+    } catch (error) {
+      console.log(error);
+    }
+
+    names.map(async (item) => {
+      let image = fs.readFileSync(`${userAppData}/packages/${item}/shapespark/cover.jpg`).toString('base64');
+
+      // try {
+
+      // } catch (error) {
+
+      // }
+      // await fs.readdir(`${userAppData}/packages/${item}/shapespark`, 'utf-8', (err, data) => {
+      //   initialPackages.push({
+      //     name: item,
+      //     img: `${userAppData}/packages/${item}/shapespark/cover.jpg`
+      //   })
+      //   console.log(2);
+
+      // })
+      initialPackages.push({
+        name: item,
+        img: image
+      })
+    })
+    event.sender.send('availableProjects', initialPackages);
+
+
+  })
+
+  ipcMain.on('initProjectConfigs', (event, args) => {
+    let options = fs.readFileSync(`${userAppData}/packages/${args.name}/options.json`).toString()
+    let menuConfig = fs.readFileSync(`${userAppData}/packages/${args.name}/menuConfig.json`).toString();
+    let options1 = JSON.parse(options);
+    let menuConfig1 = JSON.parse(menuConfig);
+
+
+    event.reply('projectConfigs', { options: options1, menuConfig: menuConfig1 })
+  })
+
   ipcMain.on('select-dirs', async (event, arg) => {
     const result = await dialog.showOpenDialog(win, {
-      properties: ['openDirectory']
+      properties: ['openFile', 'openDirectory'],
+      filters: [
+        { name: "All Files", extensions: ["*"] }]
     })
-    console.log(result);
-    
-    console.log('directories selected', result.filePaths)
+    if (result.filePaths.length < 1) {
+      return;
+    }
+
+    event.sender.send('closeDialog', { close: true });
+    [{
+      "name": "Artwall",
+      "title": "거실 아트월",
+      "options": [
+        {
+          "name": "Default_Artwall",
+          "title": "[기본]",
+          "subtitle": "기본 타일",
+          "imageSrc": "1-2.JPG"
+        },
+        {
+          "name": "Option1_Artwall",
+          "title": "[유상옵션]",
+          "subtitle": "천연 대리석",
+          "imageSrc": "1-1.JPG"
+        }
+      ]
+    }]
+
+    let coverJsonString = fs.readFileSync(result.filePaths[0] + `/cover.json`).toString();
+    let coverJson = JSON.parse(coverJsonString);
+
+    coverJson = coverJson.extensions.filter(extension => extension.type === "SwitchObjects");
+    let coverForSave = [];
+    coverJson.map(switchObject => {
+      let object = {};
+      object['name'] = switchObject.name.replace('Trigger_', '');
+      object['title'] = '';
+      let optionsArray = []
+      switchObject.nodeTypes.map(node => {
+        let optionsObject = {};
+        optionsObject['name'] = node;
+        optionsObject['title'] = '';
+        optionsObject['subtitle'] = '';
+        optionsObject['imageSrc'] = '';
+
+        optionsArray.push(optionsObject);
+      })
+      object['options'] = optionsArray;
+      coverForSave.push(object)
+    });
+    win.webContents.send('test', coverForSave);
+
+    console.log(coverForSave);
+
+
+    // return;
+
+    const allowedFiles = ['.htaccess',
+      '.nginx.conf',
+      'applicationHost.config',
+      'cover.json',
+      'shapespark',
+      'web.config'];
+
+    fs.readdir(result.filePaths[0], 'utf-8', (err, data) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (!fs.existsSync(userAppData + `/packages/${arg.name}`)) {
+        fs.mkdirSync(userAppData + `/packages/${arg.name}`);
+      }
+      data.map((file) => {
+        let stat = fs.lstatSync(result.filePaths[0] + '/' + file);
+        if (stat.isDirectory()) {
+          // console.log('pre slanja test');
+          // console.log('jeste folder', file);
+          fs.readdir(result.filePaths[0] + `/${file}`, 'utf-8', (err, shapespark) => {
+            const validFiles = ['bounds.buf', 'cover.jpg',
+              'faces.buf', 'faces16.buf',
+              'favicon.ico', 'img',
+              'meshes.buf', 'normals.buf',
+              'render.json', 'scene.json',
+              'thumbnail.jpg', 'transforms.buf',
+              'uvs0.buf', 'uvs1.buf',
+              'vertices.buf', 'webwalk']
+            // console.log(shapespark, 'shapespark');
+            console.log(shapespark.every(file => validFiles.indexOf(file) > -1));
+
+            if (shapespark.every(file => validFiles.indexOf(file) > -1)) {
+              fse.copy(result.filePaths[0] +
+                `/${file}`,
+                userAppData + `/packages/${arg.name}/shapespark`)
+                .then(() => console.log('Copy completed!'))
+                .catch(err => {
+                  return console.error(err)
+                })
+            }
+          })
+
+          // win.webContents.send('test', { test: 'test' });
+        } else {
+          if (allowedFiles.indexOf(file) > -1) {
+            // console.log('nije folder', file)
+            fs.copyFile(result.filePaths[0] +
+              `/${file}`, userAppData + `/packages/${arg.name}/${file}`, () => {
+                // console.log('zavrseno', file);
+              })
+
+          }
+        }
+
+        fse.copy(app.getAppPath() + "/static",
+          userAppData + `/packages/${arg.name}/`)
+          .then(() => console.log('Copy completed!'))
+          .catch(err => {
+            console.log('An error occurred while copying the folder.')
+            return console.error(err)
+          })
+      })
+    })
+    let ifExists = fs.existsSync(userAppData + `/packages/${arg.name}`);
+    console.log('da li postoji', ifExists);
+
+    // fs.writeFileSync(userAppData + `/packages/${arg.name}/options.json`, JSON.stringify(coverForSave));
+
+    // console.log('directories selected', result.filePaths)
   })
 
   app.on('activate', () => {

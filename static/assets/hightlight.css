@@ -1,0 +1,376 @@
+.css-1w8xajw {
+    position: absolute;
+    opacity: 1;
+    transition-duration: 0.3s;
+    left: 100%;
+    bottom: 0px;
+    width: 200px;
+    height: 100%;
+}
+.is-highlights-scrollable .css-d8tqpc {
+    pointer-events: auto;
+}
+.css-d8tqpc {
+    white-space: nowrap;
+    position: absolute;
+    inset: 0px 0px 0px -5px;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition-property: z-index, opacity, visibility, height, top;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+#LayoutHighlights{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.css-f5k1mg {
+    white-space: nowrap;
+    position: absolute;
+    inset: 0px 0px 0px -7px;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition-property: z-index, opacity, visibility, height, top;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+}
+.is-highlights-scrollable .css-f5k1mg {
+    pointer-events: auto;
+}
+.css-5edva {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0.8;
+    visibility: visible;
+    transition-property: width, height, opacity, visibility, background;
+    transition-duration: 0.3s;
+    z-index: 5;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    cursor: pointer;
+    pointer-events: none;
+    width: 100%;
+    height: 40px;
+    background-image: radial-gradient(50% 100% at 50% -20%, rgba(0, 0, 0, 0.5), transparent);
+}
+.css-u5uf58 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    visibility: hidden;
+    transition-property: width, height, opacity, visibility, background;
+    transition-duration: 0.3s;
+    z-index: 5;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    cursor: pointer;
+    pointer-events: none;
+    width: 100%;
+    height: 20px;
+    background-image: radial-gradient(50% 100% at 50% -20%, rgba(0, 0, 0, 0.5), transparent);
+}
+.css-gjgdql {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0.8;
+    visibility: visible;
+    transition-property: width, height, opacity, visibility, background;
+    transition-duration: 0.3s;
+    z-index: 5;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    cursor: pointer;
+    pointer-events: none;
+    width: 100%;
+    height: 40px;
+    background-image: radial-gradient(50% 100% at 50% 120%, rgba(0, 0, 0, 0.5), transparent);
+}
+.css-u5uf58 svg {
+    pointer-events: auto;
+    position: absolute;
+    margin: -16px;
+    transition-property: top, left;
+    transition-duration: 0.3s;
+}
+.css-u5uf58 svg {
+    left: 50%;
+    top: 40%;
+}
+.css-gjgdql svg {
+    pointer-events: auto;
+    position: absolute;
+    margin: -16px;
+    transition-property: top, left;
+    transition-duration: 0.3s;
+}
+.css-gjgdql svg {
+    left: 50%;
+    top: 60%;
+}
+
+.css-5edva svg {
+    left: 50%;
+    top: 40%;
+}
+.css-1hex789 svg {
+    pointer-events: auto;
+    position: absolute;
+    margin: -16px;
+    transition-property: top, left;
+    transition-duration: 0.3s;
+}
+.css-1hex789 svg {
+    left: 50%;
+    top: 60%;
+}
+.css-5edva svg {
+    pointer-events: auto;
+    position: absolute;
+    margin: -16px;
+    transition-property: top, left;
+    transition-duration: 0.3s;
+}
+.css-1hex789 {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0;
+    visibility: hidden;
+    transition-property: width, height, opacity, visibility, background;
+    transition-duration: 0.3s;
+    z-index: 5;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    cursor: pointer;
+    pointer-events: none;
+    width: 100%;
+    height: 20px;
+    background-image: radial-gradient(50% 100% at 50% 120%, rgba(0, 0, 0, 0.5), transparent);
+}
+.css-1grsck6 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.css-1vowlrx {
+    inset: 0px -15px 0px 0px;
+    position: absolute;
+    cursor: default;
+}
+.e1xx9fq11 {
+    height: 100%;
+}
+.e1xx9fq11 img{
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.css-1g9e2n5 img{
+    max-width: 100%;
+}
+.css-1g9e2n5:first-of-type {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.css-18irzvx {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/HoTMvA9VuKtIyJKE4NYAC.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-1kmu367 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/8IirsnZxZnPorm-xFfk8u.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-nr0j08 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/oZ0h6ky3JQwmKfvXiAsoG.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-yc4kvu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/3NVLLv6B4-LutnkqrBq_a.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-1cgjf1g {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/IaLZVx0k7ux30nyG9NZvs.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-z58eqp {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-image: url(https://d1s8ked84v2m3r.cloudfront.net/brigade/kino/highlights/WZPBHveuJgYPN3VqcFKKk.jpg);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease 0s;
+}
+.css-ijnaex {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px 5px 2px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.4;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.css-1khcmp6 {
+    position: absolute;
+    left: 0px;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease 0s, visibility ease 0s;
+}
+.css-1w7rkhm {
+    position: relative;
+}
+.css-1w7rkhm > strong {
+    position: relative;
+    font-weight: 400;
+    z-index: 1;
+}
+.css-15jmi7 {
+    position: absolute;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: auto;
+    width: 14px;
+    transition: opacity 0.4s ease 0.1s, visibility 0.2s ease;
+}
+.css-o4ed1j {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: auto;
+    width: 4px;
+    overflow: hidden;
+    border-radius: 2px;
+    transition: width 0.4s ease 0.4s, height 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
+    background: transparent;
+}
+.css-iqbqta {
+    position: absolute;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.8);
+    left: 0px;
+    right: 0px;
+    top: 32.5815%;
+    height: 67.4185%;
+    min-height: 50px;
+}
+
+.css-1g9e2n5 {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 0px -5px 7.5px 5px;
+    width: 195px;
+    height: 125px;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
+    box-shadow: rgb(0 0 0 / 50%) 0px 5px 10px -5px;
+    transition: box-shadow 0.3s ease 0s;
+    border-radius: 3px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.css-q3z36v {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 0px -6px 9px 6px;
+    width: 194px;
+    height: 125px;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
+    box-shadow: rgb(255 255 255) 0px 0px 0px 2px;
+    transition: box-shadow 0.3s ease 0s;
+    border-radius: 3px;
+    text-align: center;
+    overflow: hidden;
+}
+.active_view .css-1w7rkhm > strong{
+    color: rgb(0, 204, 255);
+    font-weight: bold;
+}

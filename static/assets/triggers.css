@@ -1,0 +1,121 @@
+.css-50dp1m {
+    position: absolute;
+    pointer-events: auto;
+    text-align: right;
+    right: 0px;
+    left: auto;
+    margin-bottom: 0px;
+    bottom: 7px;
+    padding: 0px 7px;
+}
+.css-xvqqv4 {
+    float: right;
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+}
+.css-dqrvip {
+    margin-left: 2px;
+}
+.css-1c9sfod {
+    appearance: none;
+    user-select: none;
+    width: 39px;
+    height: 39px;
+    box-shadow: none;
+    cursor: pointer;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    pointer-events: auto;
+    stroke: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    margin: 0px;
+    padding: 4px;
+    text-decoration: none;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 0px;
+    transition: background 0.3s ease 0s, color, stroke, fill, opacity, visibility;
+    font: inherit;
+    overflow: visible;
+    background: transparent;
+}
+.css-1sruob5 {
+    float: right;
+    margin-right: 0px;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    opacity: 1;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+}
+.css-zbp4ta {
+    appearance: none;
+    user-select: none;
+    width: 39px;
+    height: 39px;
+    box-shadow: none;
+    cursor: pointer;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    pointer-events: auto;
+    stroke: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    opacity: 1;
+    margin: 0px;
+    padding: 4px;
+    text-decoration: none;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 0px;
+    transition: background 0.3s ease 0s, color, stroke, fill, opacity, visibility;
+    font: inherit;
+    overflow: visible;
+}
+.css-scfpn5 {
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-left: -100%;
+    opacity: 1;
+    transition-duration: 0.3s;
+    transition-property: filter, opacity;
+}
+.css-dqrvip {
+    margin-left: 2px;
+}
+.css-1wsqobq {
+    position: relative;
+    height: 39px;
+    fill: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+.css-1wsqobq a{
+    color: rgb(255, 255, 255);
+}
+.css-19leqyr {
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    margin-top: 4px;
+    white-space: nowrap;
+    transform: translate(0%, -50%);
+}
+.css-1m9wbzr {
+    font-size: 9px;
+    font-weight: 500;
+    position: absolute;
+    top: -14px;
+    right: 1px;
+}
