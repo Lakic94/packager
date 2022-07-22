@@ -1,9 +1,22 @@
-:host{
-    display:block;
-    padding-top: 5em;
-    height: calc(100vh - 5em);
+:host {
+  display: block;
+  padding-top: 5em;
+  height: calc(100vh - 5em);
 
-    mat-tab-group {
-        width: 70%;
-    }
+  mat-tab-group {
+    width: 70%;
+  }
+
+  ::ng-deep .mat-tab-header {
+    margin-bottom: 5em !important;
+  }
+
+  mat-expansion-panel {
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
 }

@@ -1,12 +1,141 @@
 <div fxLayout="column" fxLayoutAlign="space-between center">
   <mat-tab-group mat-stretch-tabs dynamicHeight>
-    <mat-tab label="Menu Configuration">
-      <div class="example-small-box mat-elevation-z4">{{ options | json }}</div>
-    </mat-tab>
     <mat-tab label="Options Configuration">
-      <div class="example-large-box mat-elevation-z4">
-        {{ menuConfig | json }}
+      <div class="example-small-box mat-elevation-z4" *ngIf="optionsForm">
+        <div [formGroup]="optionsForm">
+          <ng-container formArrayName="options">
+            <ng-container
+              *ngFor="let option of options.controls; let i = index"
+            >
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ inputOptions[i].name }}
+                  </mat-panel-title>
+                  <mat-panel-description> </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="space-between stretch"
+                  class="lesson-form-row"
+                  [formGroupName]="i"
+                >
+                  <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="name"
+                      [readonly]="true"
+                      [disabled]="true"
+                    />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>First Title</mat-label>
+                    <input matInput formControlName="title" />
+                  </mat-form-field>
+
+                  <ng-container formArrayName="options">
+                    <ng-container
+                      *ngFor="
+                        let option of getSubOptions(option);
+                        let j = index
+                      "
+                    >
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            {{ inputOptions[i].options[j].name }}
+                          </mat-panel-title>
+                          <mat-panel-description> </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div
+                          fxLayout="column"
+                          fxLayoutAlign="space-between stretch"
+                          class="lesson-form-row"
+                          [formGroupName]="j"
+                        >
+                          <mat-form-field appearance="fill">
+                            <mat-label>Second Name</mat-label>
+                            <input matInput formControlName="name" />
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Second Title</mat-label>
+                            <input
+                              matInput
+                              formControlName="title"
+                              placeholder="Lesson title"
+                            />
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Second Subtitle</mat-label>
+                            <input
+                              matInput
+                              formControlName="subtitle"
+                              placeholder="Lesson title"
+                            />
+                          </mat-form-field>
+                          <app-image-picker
+                            [data]="{ i: i + 1, j: j + 1 }"
+                            formControlName="imageSrc"
+                            placeholder="Lesson title"
+                          ></app-image-picker>
+                        </div>
+                      </mat-expansion-panel>
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </mat-expansion-panel>
+            </ng-container>
+          </ng-container>
+        </div>
       </div>
+      <button mat-raised-button (click)="saveChanges()">Save</button>
+    </mat-tab>
+    <mat-tab label="Menu Configuration">
+      <div class="example-small-box mat-elevation-z4" *ngIf="menuConfigForm">
+        <div [formGroup]="menuConfigForm">
+          <ng-container formArrayName="options">
+            <ng-container
+              *ngFor="let option of menuOptions.controls; let i = index"
+            >
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ menuConfig[i].name }}
+                  </mat-panel-title>
+                  <mat-panel-description> </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="space-between stretch"
+                  class="lesson-form-row"
+                  [formGroupName]="i"
+                >
+                  <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="name"
+                      [readonly]="true"
+                      [disabled]="true"
+                    />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>First Title</mat-label>
+                    <input matInput formControlName="title" />
+                  </mat-form-field>
+                  <app-image-picker
+                    [data]="{ i: i + 1 }"
+                    formControlName="imgSrc"
+                    placeholder="Lesson title"
+                  ></app-image-picker>
+                </div>
+              </mat-expansion-panel>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <button mat-raised-button (click)="savemenu()">Save</button>
     </mat-tab>
   </mat-tab-group>
   <button mat-raised-button (click)="navigate()">Back</button>

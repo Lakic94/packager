@@ -123,12 +123,81 @@ try {
   ipcMain.on('initProjectConfigs', (event, args) => {
     let options = fs.readFileSync(`${userAppData}/packages/${args.name}/options.json`).toString()
     let menuConfig = fs.readFileSync(`${userAppData}/packages/${args.name}/menuConfig.json`).toString();
+    console.log(options);
+
     let options1 = JSON.parse(options);
     let menuConfig1 = JSON.parse(menuConfig);
 
 
     event.reply('projectConfigs', { options: options1, menuConfig: menuConfig1 })
   })
+
+  ipcMain.on('saveChanges', (event, args) => {
+    // console.log(args);
+    let test = args.optionsConfig.options.map(option => {
+      // console.log(option);
+      let newOptionsArray = option.options.map(option1 => {
+        // console.log(option1);
+        if (option1.imageSrc.path) {
+          const path = fs.readFileSync(option1.imageSrc.path);
+          const save = fse.copySync(option1.imageSrc.path,
+            `${userAppData}/packages/${args.name}/assets/thumbnail/${option1.imageSrc.name}.jpg`, { overwrite: true })
+        }
+
+        let newOption = { ...option1, ...{ imageSrc: option1.imageSrc.name ? option1.imageSrc.name + '.jpg' : '' } };
+        return newOption;
+      })
+
+      let newOptionsObject = { ...option, ...{ options: newOptionsArray } }
+      return newOptionsObject;
+
+    })
+
+    win.webContents.send('fileInt', test)
+
+    // const save = fse.copySync(option1.imageSrc.path,
+    //   `${userAppData}/packages/${args.name}/assets/thumbnail/
+    //   ${option1.imageSrc.name}.jpg`, { overwrite: true })
+
+    const savedOptions = fs.writeFileSync(userAppData + `/packages/${args.name}/options.json`, JSON.stringify(test))
+  })
+
+  ipcMain.on('saveMenu', (event, args) => {
+
+    let test = args.menuConfig.options.map(option => {
+      console.log('option', option);
+
+      if (option.imgSrc.path) {
+        const path = fs.readFileSync(option.imgSrc.path);
+        const save = fse.copySync(option.imgSrc.path,
+          `${userAppData}/packages/${args.name}/assets/views/${option.imgSrc.name}.jpg`, { overwrite: true })
+      }
+
+      let newOption = { ...option, ...{ imgSrc: option.imgSrc.name ? option.imgSrc.name + '.jpg' : '' } };
+      return newOption;
+    })
+
+    const savedOptions = fs.writeFileSync(userAppData + `/packages/${args.name}/menuConfig.json`, JSON.stringify(test))
+    // console.log('savedOptins', savedOptions);
+  })
+
+  ipcMain.on('testMultiple', (event, args) => {
+
+    event.sender.send('testSender', '1');
+  })
+
+  ipcMain.on('select-image', async (event, arg) => {
+    const result = await dialog.showOpenDialog(win, {
+      properties: ['openFile'],
+      filters: [
+        { name: "All Files", extensions: ["*"] }]
+    })
+
+    event.sender.send('select-image-close', { files: result });
+  })
+
+
+
 
   ipcMain.on('select-dirs', async (event, arg) => {
     const result = await dialog.showOpenDialog(win, {
@@ -141,24 +210,6 @@ try {
     }
 
     event.sender.send('closeDialog', { close: true });
-    [{
-      "name": "Artwall",
-      "title": "거실 아트월",
-      "options": [
-        {
-          "name": "Default_Artwall",
-          "title": "[기본]",
-          "subtitle": "기본 타일",
-          "imageSrc": "1-2.JPG"
-        },
-        {
-          "name": "Option1_Artwall",
-          "title": "[유상옵션]",
-          "subtitle": "천연 대리석",
-          "imageSrc": "1-1.JPG"
-        }
-      ]
-    }]
 
     let coverJsonString = fs.readFileSync(result.filePaths[0] + `/cover.json`).toString();
     let coverJson = JSON.parse(coverJsonString);
@@ -184,7 +235,7 @@ try {
     });
     win.webContents.send('test', coverForSave);
 
-    console.log(coverForSave);
+    console.log('coverForSave', coverForSave);
 
 
     // return;
@@ -204,6 +255,10 @@ try {
       if (!fs.existsSync(userAppData + `/packages/${arg.name}`)) {
         fs.mkdirSync(userAppData + `/packages/${arg.name}`);
       }
+
+      const savedOptions = fs.writeFileSync(userAppData + `/packages/${arg.name}/options.json`, JSON.stringify(coverForSave))
+      console.log('savedOptins', savedOptions);
+
       data.map((file) => {
         let stat = fs.lstatSync(result.filePaths[0] + '/' + file);
         if (stat.isDirectory()) {
@@ -220,6 +275,27 @@ try {
               'vertices.buf', 'webwalk']
             // console.log(shapespark, 'shapespark');
             console.log(shapespark.every(file => validFiles.indexOf(file) > -1));
+
+            let menuConfig = fs.readFileSync(result.filePaths[0] + `/${file}/scene.json`).toString();
+            let menuConfigJson = JSON.parse(menuConfig);
+
+            const menu = menuConfigJson.views.filter(
+              (view) =>
+                !view.hideFromMenu &&
+                view.name !== "Orbit" &&
+                view.name !== "Top"
+            ).map(config => {
+              return {
+                name: config.name,
+                title: '',
+                imgSrc: ''
+              }
+            })
+
+            console.log('menuConfig', menu);
+
+            const savedMenu = fs.writeFileSync(userAppData + `/packages/${arg.name}/menuConfig.json`, JSON.stringify(menu))
+            console.log('savedOptins', savedMenu);
 
             if (shapespark.every(file => validFiles.indexOf(file) > -1)) {
               fse.copy(result.filePaths[0] +
@@ -252,6 +328,8 @@ try {
             return console.error(err)
           })
       })
+
+
     })
     let ifExists = fs.existsSync(userAppData + `/packages/${arg.name}`);
     console.log('da li postoji', ifExists);
